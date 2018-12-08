@@ -54,32 +54,9 @@ require_once '../engine/init.php';
             <h1 class="jumbotron-heading">Album example <?= $pageOpenCount ?></h1>
         </div>
         <?php
-        function getEmployees($mysqliConnect, $orderDir = 'ASC')
-        {
-            $sql = sprintf("SELECT * FROM employee ORDER BY first_name %s;", $orderDir);
-            $stmt = mysqli_query($mysqliConnect, $sql);
-            $employees = [];
-            while ($row = mysqli_fetch_assoc($stmt)) {
-                $employees[] = $row;
-            }
-
-            return $employees;
-        }
+        $employees = getEmployees($mysqlConnect);
+        include '../templates/employees.php';
         ?>
-        <ul>
-            <?php
-            $employees = getEmployees($mysqlConnect);
-            foreach($employees as $employee):
-                ?>
-                <li>
-                    <strong><?= $employee['id_employee'] ?></strong>
-                    <?= $employee['first_name'] ?>
-                    <?= $employee['middle_name'] ?>
-                </li>
-            <?php
-            endforeach;
-            ?>
-        </ul>
     </section>
 
     <div class="album py-5 bg-light">
