@@ -65,7 +65,7 @@ $pageH1 = 'Домашняя страница';
         <div class="container">
             <div class="row">
                 <?php
-                $images = getPicturesAssoc($mysqlConnect);
+                $images = getPicturesAssoc($mysqlConnect, 'Домашняя страница');
                 foreach ($images as $image) {
                     include '../templates/gallery_item.php';
                 }
