@@ -1,7 +1,6 @@
 <?php
 
-require_once '../engine/funcs.php';
-require_once '../engine/helpers.php';
+require_once '../engine/init.php';
 
 ?>
 <!doctype html>
@@ -54,6 +53,10 @@ require_once '../engine/helpers.php';
         <div class="container">
             <h1 class="jumbotron-heading">Album example <?= $pageOpenCount ?></h1>
         </div>
+        <?php
+        $employees = getEmployees($mysqlConnect);
+        include '../templates/employees.php';
+        ?>
     </section>
 
     <div class="album py-5 bg-light">
