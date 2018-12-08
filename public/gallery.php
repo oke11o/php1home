@@ -2,7 +2,7 @@
 
 require_once '../engine/init.php';
 
-$pageH1 = 'Домашняя страница';
+$pageH1 = 'Галерея';
 ?>
 <!doctype html>
 <html lang="en">
