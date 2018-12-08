@@ -63,7 +63,7 @@ require_once '../engine/init.php';
         <div class="container">
             <div class="row">
                 <?php
-                $images = getPicturesFromDb($mysqlConnect);
+                $images = getPicturesAssoc($mysqlConnect);
                 foreach ($images as $image) {
                     include '../templates/gallery_item.php';
                 }

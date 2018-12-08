@@ -23,3 +23,15 @@ function getPicturesFromDb($mysqliConnect)
 
     return $pictures;
 }
+
+function getPicturesAssoc($mysqliConnect)
+{
+    $sql = 'SELECT * FROM pictures';
+    $stmt = mysqli_query($mysqliConnect, $sql);
+    $pictures = [];
+    while ($row = mysqli_fetch_assoc($stmt)) {
+        $pictures[] = $row;
+    }
+
+    return $pictures;
+}
