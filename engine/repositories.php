@@ -11,3 +11,15 @@ function getEmployees($mysqliConnect, $orderDir = 'ASC')
 
     return $employees;
 }
+
+function getPicturesFromDb($mysqliConnect)
+{
+    $sql = 'SELECT * FROM pictures';
+    $stmt = mysqli_query($mysqliConnect, $sql);
+    $pictures = [];
+    while ($row = mysqli_fetch_assoc($stmt)) {
+        $pictures[] = $row['path'];
+    }
+
+    return $pictures;
+}
