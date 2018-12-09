@@ -67,6 +67,31 @@
             </div>
         </div>
     </div>
+
+
+    <div class="container">
+        <form method="post" enctype="multipart/form-data" action="/gallery.php">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Имя</label>
+                <input name="name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Имя" required>
+            </div>
+
+            <div class="form-group">
+                <label for="exampleFormControlSelect2">Example multiple select</label>
+                <select name="gallery" class="form-control" id="exampleFormControlSelect2">
+                    <option value="Домашняя страница">Домашняя страница</option>
+                    <option value="Страница галерея">Страница галерея</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlFile1">Картинка</label>
+                <input name="picture" type="file" class="form-control-file" id="exampleFormControlFile1">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary">Отправить</button>
+            </div>
+        </form>
+    </div>
 </main>
 
 <!-- Bootstrap core JavaScript
