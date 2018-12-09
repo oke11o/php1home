@@ -11,3 +11,30 @@ function getEmployees($mysqliConnect, $orderDir = 'ASC')
 
     return $employees;
 }
+
+function getPicturesFromDb($mysqliConnect)
+{
+    $sql = 'SELECT * FROM pictures';
+    $stmt = mysqli_query($mysqliConnect, $sql);
+    $pictures = [];
+    while ($row = mysqli_fetch_assoc($stmt)) {
+        $pictures[] = $row['path'];
+    }
+
+    return $pictures;
+}
+
+function getPicturesAssoc($mysqliConnect, $gallery = '')
+{
+    $sql = 'SELECT * FROM pictures';
+    if ($gallery) {
+        $sql .= sprintf(' WHERE gallery="%s"', $gallery);
+    }
+    $stmt = mysqli_query($mysqliConnect, $sql);
+    $pictures = [];
+    while ($row = mysqli_fetch_assoc($stmt)) {
+        $pictures[] = $row;
+    }
+
+    return $pictures;
+}

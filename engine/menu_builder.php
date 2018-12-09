@@ -2,16 +2,15 @@
 
 return [
     [
-        'name' => 'Home',
+        'name' => 'Домой',
         'href' => '/',
         'attrs' => [
-            'isActive' => true,
         ],
         'children' => [],
     ],
     [
-        'name' => 'Link',
-        'href' => '/link',
+        'name' => 'Галерея',
+        'href' => '/gallery.php',
         'children' => [],
     ],
     [
