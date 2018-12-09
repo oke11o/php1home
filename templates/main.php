@@ -33,8 +33,8 @@
             $menu = require('../engine/menu_builder.php');
             include '../templates/chunks/menu_ul.php';
             ?>
-            <form class="form-inline my-2 my-md-0">
-                <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+            <form class="form-inline my-2 my-md-0" method="get">
+                <input name="search" class="form-control" type="text" placeholder="Search" aria-label="Search" value="<?= $search ?>">
             </form>
         </div>
     </div>
@@ -49,7 +49,7 @@
             <h1 class="jumbotron-heading"><?= $pageH1 ?></h1>
         </div>
         <?php
-        $employees = getEmployees($mysqlConnect);
+        $employees = getEmployees($mysqlConnect, $search);
         include '../templates/chunks/employees.php';
         ?>
         <p>Показов сайта <?= $pageOpenCount ?></p>

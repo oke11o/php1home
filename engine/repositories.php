@@ -1,9 +1,16 @@
 <?php
 
-function getEmployees($mysqliConnect, $orderDir = 'ASC')
+function getEmployees($mysqliConnect, $search = '', $orderDir = 'ASC')
 {
-    $sql = sprintf("SELECT * FROM employee ORDER BY first_name %s;", $orderDir);
+    $sql = 'SELECT * FROM employee';
+    if ($search) {
+        $sql .= ' WHERE first_name LIKE "%'.$search.'%"';
+    }
+    $sql .= sprintf(' ORDER BY first_name %s;', $orderDir);
     $stmt = mysqli_query($mysqliConnect, $sql);
+    if (mysqli_error($mysqliConnect)) {
+        die(mysqli_error($mysqliConnect));
+    }
     $employees = [];
     while ($row = mysqli_fetch_assoc($stmt)) {
         $employees[] = $row;
