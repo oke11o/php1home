@@ -14,6 +14,11 @@ return [
         'children' => [],
     ],
     [
+        'name' => 'Отзывы',
+        'href' => '/reviews.php',
+        'children' => [],
+    ],
+    [
         'name' => 'Disabled',
         'href' => '',
         'attrs' => [
