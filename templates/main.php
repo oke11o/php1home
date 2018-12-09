@@ -31,7 +31,7 @@
         <div class="collapse navbar-collapse" id="navbarsExample09">
             <?php
             $menu = require('../engine/menu_builder.php');
-            include '../templates/menu_ul.php';
+            include '../templates/chunks/menu_ul.php';
             ?>
             <form class="form-inline my-2 my-md-0">
                 <input class="form-control" type="text" placeholder="Search" aria-label="Search">
@@ -50,7 +50,7 @@
         </div>
         <?php
         $employees = getEmployees($mysqlConnect);
-        include '../templates/employees.php';
+        include '../templates/chunks/employees.php';
         ?>
         <p>Показов сайта <?= $pageOpenCount ?></p>
     </section>
@@ -61,7 +61,7 @@
                 <?php
                 $images = getPicturesAssoc($mysqlConnect, $galleryType);
                 foreach ($images as $image) {
-                    include '../templates/gallery_item.php';
+                    include '../templates/chunks/gallery_item.php';
                 }
                 ?>
             </div>
