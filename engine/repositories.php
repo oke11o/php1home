@@ -57,3 +57,15 @@ function getReviews($mysqliConnect)
 
     return $reviews;
 }
+
+function getProducts($mysqliConnect)
+{
+    $sql = 'SELECT * FROM products';
+    $stmt = mysqli_query($mysqliConnect, $sql);
+    $products = [];
+    while ($row = mysqli_fetch_assoc($stmt)) {
+        $products[] = $row;
+    }
+
+    return $products;
+}

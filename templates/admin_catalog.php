@@ -34,7 +34,8 @@
             include '../templates/chunks/menu_ul.php';
             ?>
             <form class="form-inline my-2 my-md-0" method="get">
-                <input name="search" class="form-control" type="text" placeholder="Search" aria-label="Search" value="<?= $search??'' ?>">
+                <input name="search" class="form-control" type="text" placeholder="Search" aria-label="Search"
+                       value="<?= $search ?? '' ?>">
             </form>
         </div>
     </div>
@@ -49,12 +50,53 @@
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row">
-                <?php
-                $products = [];
-                foreach ($products as $product) {
-                }
-                ?>
+                <ul>
+
+                    <?php
+                    $products = getProducts($mysqlConnect);
+                    foreach ($products as $product) :
+                        ?>
+                        <li>
+                            [<?= $product['id'] ?>]
+                            <?= $product['name'] ?>
+                            <span><?= $product['price'] ?></span>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
             </div>
+        </div>
+
+        <div class="container">
+            <form method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Имя</label>
+                    <input name="name" type="text" class="form-control" placeholder="Имя" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Описание</label>
+                    <textarea name="description" class="form-control" rows="5" required placeholder="Описание"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Цена</label>
+                    <input name="price" type="text" class="form-control" placeholder="Цена" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="exampleFormControlSelect2">Категоря товаров</label>
+                    <select name="category" class="form-control">
+                        <option value="electro">Электро товары</option>
+                        <option value="technic">Бытовая техника</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Картинка</label>
+                    <input name="image" type="file" class="form-control-file">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Отправить</button>
+                </div>
+            </form>
         </div>
     </div>
 

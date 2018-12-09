@@ -3,3 +3,5 @@
 /data/page_open_count.txt
 /public/img/gallery/uploaded/*
 !/public/img/gallery/uploaded/.gitkeep
+/public/img/products/*
+!/public/img/products/.gitkeep
