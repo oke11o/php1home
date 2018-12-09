@@ -24,16 +24,16 @@ return [
         'children' => [],
     ],
     [
-        'name' => 'Dropdown',
+        'name' => 'Товары',
+        'href' => '/catalog.php',
+        'children' => [],
+    ],
+    [
+        'name' => 'Адмика',
         'children' => [
             [
-                'name' => 'Action',
-                'href' => '/action',
-                'children' => [],
-            ],
-            [
-                'name' => 'Other action',
-                'href' => '/other-action',
+                'name' => 'Каталог',
+                'href' => '/admin_catalog.php',
                 'children' => [],
             ],
         ],
