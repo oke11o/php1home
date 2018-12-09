@@ -22,7 +22,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
     <div class="container">
-        <a class="navbar-brand" href="#">PHP Level 1</a>
+        <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09"
                 aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -41,56 +41,43 @@
 </nav>
 
 <main role="main" class="site-main main">
-    <?php
-    $pageOpenCount = getPageOpenCount();
-    ?>
-    <section class="jumbotron text-center">
-        <div class="container">
-            <h1 class="jumbotron-heading"><?= $pageH1 ?></h1>
-        </div>
-        <?php
-        $employees = getEmployees($mysqlConnect, $search);
-        include '../templates/chunks/employees.php';
-        ?>
-        <p>Показов сайта <?= $pageOpenCount ?></p>
-    </section>
-
-    <div class="album py-5 bg-light">
-        <div class="container">
-            <div class="row">
-                <?php
-                $images = getPicturesAssoc($mysqlConnect, $galleryType);
-                foreach ($images as $image) {
-                    include '../templates/chunks/gallery_item.php';
-                }
-                ?>
-            </div>
-        </div>
-    </div>
-
-
     <div class="container">
-        <form method="post" enctype="multipart/form-data" action="/gallery.php">
-            <div class="form-group">
-                <label for="exampleFormControlInput1">Имя</label>
-                <input name="name" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Имя" required>
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h1 class="jumbotron-heading"><?= $pageH1 ?></h1>
             </div>
-
+        </section>
+    </div>
+    <div class="container">
+        <form method="post" action="/calc.php">
             <div class="form-group">
-                <label for="exampleFormControlSelect2">Example multiple select</label>
-                <select name="gallery" class="form-control" id="exampleFormControlSelect2">
-                    <option value="Домашняя страница">Домашняя страница</option>
-                    <option value="Страница галерея">Страница галерея</option>
+                <label for="exampleFormControlInput1">Аргумент 1</label>
+                <input name="arg1" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Аргумент 1" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput2">Аргумент 2</label>
+                <input name="arg2" type="text" class="form-control" id="exampleFormControlInput2" placeholder="Аргумент 2" required>
+            </div>
+            <div class="form-group">
+                <label for="exampleFormControlSelect2">Тип операции</label>
+                <select name="operation" class="form-control" id="exampleFormControlSelect2">
+                    <?php foreach ($operationsSelect as $key => $value): ?>
+                        <option value="<?= $key ?>"><?= $value ?></option>
+                    <?php endforeach ?>
                 </select>
-            </div>
-            <div class="form-group">
-                <label for="exampleFormControlFile1">Картинка</label>
-                <input name="picture" type="file" class="form-control-file" id="exampleFormControlFile1">
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Отправить</button>
             </div>
         </form>
+    </div>
+    <div class="container">
+        <section class="jumbotron text-center">
+            <div class="container">
+                <h2 class="jumbotron-heading">Результат:</h2>
+                <h2 class="jumbotron-heading"><?= 'sd' ?></h2>
+            </div>
+        </section>
     </div>
 </main>
 

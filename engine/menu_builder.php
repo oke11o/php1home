@@ -19,11 +19,8 @@ return [
         'children' => [],
     ],
     [
-        'name' => 'Disabled',
-        'href' => '',
-        'attrs' => [
-            'disabled' => true,
-        ],
+        'name' => 'Калькулятор',
+        'href' => '/calc.php',
         'children' => [],
     ],
     [
