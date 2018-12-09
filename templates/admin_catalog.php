@@ -60,6 +60,16 @@
                             [<?= $product['id'] ?>]
                             <?= $product['name'] ?>
                             <span><?= $product['price'] ?></span>
+                            <?php
+                            if ($product['deleted_at']) :
+                                echo 'Product deleted at '.$product['deleted_at'];
+                            else:
+                                ?>
+                                <form method="post" action="admin_catalog_delete.php">
+                                    <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                                    <button type="submit" class="btn btn-danger">Удалить</button>
+                                </form>
+                            <?php endif; ?>
                         </li>
                     <?php endforeach; ?>
                 </ul>
@@ -75,7 +85,8 @@
 
                 <div class="form-group">
                     <label>Описание</label>
-                    <textarea name="description" class="form-control" rows="5" required placeholder="Описание"></textarea>
+                    <textarea name="description" class="form-control" rows="5" required
+                              placeholder="Описание"></textarea>
                 </div>
                 <div class="form-group">
                     <label>Цена</label>
