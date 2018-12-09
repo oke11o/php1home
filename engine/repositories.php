@@ -70,6 +70,20 @@ function getProducts($mysqlConnect)
     return $products;
 }
 
+function getProduct($mysqlConnect, $id)
+{
+    $id = (int)$id;
+    $sql = 'SELECT * FROM products WHERE id='.$id;
+    $stmt = mysqli_query($mysqlConnect, $sql);
+    $product = null;
+    while ($row = mysqli_fetch_assoc($stmt)) {
+        $product = $row;
+        break;
+    }
+
+    return $product;
+}
+
 function deleteProduct($mysqlConnect, $id)
 {
     $date = date('Y-m-d H:i:s');
