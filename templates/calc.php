@@ -52,17 +52,17 @@
         <form method="post" action="/calc.php">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Аргумент 1</label>
-                <input name="arg1" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Аргумент 1" required>
+                <input name="arg1" type="number" value="<?= $arg1 ?>" class="form-control" id="exampleFormControlInput1" placeholder="Аргумент 1" required>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlInput2">Аргумент 2</label>
-                <input name="arg2" type="text" class="form-control" id="exampleFormControlInput2" placeholder="Аргумент 2" required>
+                <input name="arg2" type="number" value="<?= $arg2 ?>" class="form-control" id="exampleFormControlInput2" placeholder="Аргумент 2" required>
             </div>
             <div class="form-group">
                 <label for="exampleFormControlSelect2">Тип операции</label>
                 <select name="operation" class="form-control" id="exampleFormControlSelect2">
                     <?php foreach ($operationsSelect as $key => $value): ?>
-                        <option value="<?= $key ?>"><?= $value ?></option>
+                        <option value="<?= $key ?>"<?php if ($key == $operation) { echo 'selected'; } ?>><?= $value ?></option>
                     <?php endforeach ?>
                 </select>
             </div>
@@ -75,7 +75,7 @@
         <section class="jumbotron text-center">
             <div class="container">
                 <h2 class="jumbotron-heading">Результат:</h2>
-                <h2 class="jumbotron-heading"><?= 'sd' ?></h2>
+                <h2 class="jumbotron-heading"><?= $result ?></h2>
             </div>
         </section>
     </div>
