@@ -1,6 +1,6 @@
 <?php
 
-require_once '../engine/init.php';
+require_once '../../../engine/init.php';
 
 $message = 'Не валидный запрос';
 if ($_POST && isset($_POST['product_id'])) {
@@ -10,4 +10,4 @@ if ($_POST && isset($_POST['product_id'])) {
     }
 }
 
-header('Location: admin_catalog.php?message='.$message);
+header('Location: index.php?message='.$message);

@@ -1,6 +1,6 @@
 <?php
 
-require_once '../engine/init.php';
+require_once '../../../engine/init.php';
 
 $pageH1 = 'Админка каталога';
 
@@ -8,14 +8,14 @@ if ($_POST) {
     $image = '';
     if (isset($_FILES['image']) && $_FILES['image']['tmp_name']) {
         $image = '/img/products/'.$_FILES['image']['name'];
-        $uploadfile = __DIR__ . $image;
+        $uploadfile = ROOT_DIR.'public'.$image;
         if (!move_uploaded_file($_FILES['image']['tmp_name'], $uploadfile)) {
             die('Cannot upload file');
         }
     }
     $name = $_POST['name'];
     $description = $_POST['description'];
-    $price = (float) $_POST['price'];
+    $price = (float)$_POST['price'];
     $category = $_POST['category'];
 
     $sql = sprintf(
@@ -31,8 +31,8 @@ if ($_POST) {
         die(mysqli_error($mysqlConnect));
     }
     $id = mysqli_insert_id($mysqlConnect);
-    header('Location: admin_catalog.php?new_id='.$id);
+    header('Location: index.php?new_id='.$id);
     die;
 }
 
-require '../templates/admin_catalog.php';
+require ROOT_DIR.'templates/admin/catalog/index.php';

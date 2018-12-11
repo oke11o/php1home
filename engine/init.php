@@ -1,5 +1,6 @@
 <?php
 
+define('ROOT_DIR', __DIR__.'/../');
 define('CALC_OPERATION_SUM', 'sum');
 define('CALC_OPERATION_SUB', 'sub');
 define('CALC_OPERATION_MULT', 'mult');
@@ -17,6 +18,6 @@ $mysqlConnect = mysqli_connect(
     $config['db_name']
     );
 
-require_once '../engine/funcs.php';
-require_once '../engine/helpers.php';
-require_once '../engine/repositories.php';
+require_once __DIR__.'/funcs.php';
+require_once __DIR__.'/helpers.php';
+require_once __DIR__.'/repositories.php';

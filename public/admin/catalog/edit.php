@@ -1,6 +1,6 @@
 <?php
 
-require_once '../engine/init.php';
+require_once '../../../engine/init.php';
 
 $id = $_GET['id'] ?? null;
 if (!$id) {
@@ -43,7 +43,7 @@ if ($_POST) {
     }
 
     $message = 'Успешно отреактирван продукт с id='.$id;
-    header('Location: admin_catalog.php?message='.$message);
+    header('Location: index.php?message='.$message);
 }
 
-require '../templates/admin_catalog_edit.php';
+require ROOT_DIR.'templates/admin/catalog/edit.php';

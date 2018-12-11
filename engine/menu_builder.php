@@ -33,7 +33,7 @@ return [
         'children' => [
             [
                 'name' => 'Каталог',
-                'href' => '/admin_catalog.php',
+                'href' => '/admin/catalog/index.php',
                 'children' => [],
             ],
         ],
