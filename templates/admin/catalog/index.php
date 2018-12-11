@@ -17,31 +17,42 @@
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row">
-                <ul>
-
+                <table class="table table-striped">
+                    <thead>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Image</th>
+                        <th>Image</th>
+                    </thead>
+                    <tbody>
                     <?php
                     $products = getProducts($mysqlConnect);
                     foreach ($products as $product) :
                         ?>
-                        <li>
-                            <a href="/admin/catalog/edit.php?id=<?= $product['id'] ?>">
-                                [<?= $product['id'] ?>]
-                                <?= $product['name'] ?>
-                            </a>
-                            <span><?= $product['price'] ?></span>
-                            <?php
-                            if ($product['deleted_at']) :
-                                echo 'Product deleted at '.$product['deleted_at'];
-                            else:
-                                ?>
+                        <tr>
+                            <td><?= $product['id'] ?></td>
+                            <td><?= $product['name'] ?></td>
+                            <td><?= $product['category'] ?></td>
+                            <td><?= $product['description'] ?></td>
+                            <td><?= $product['price'] ?></td>
+                            <td>
+                                <?php if ($product['image']): ?>
+                                <img src="<?= $product['image'] ?>" width="60">
+                                <?php endif; ?>
+                            </td>
+                            <td>
                                 <form method="post" action="/admin/catalog/delete.php">
                                     <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
                                     <button type="submit" class="btn btn-danger">Удалить</button>
                                 </form>
-                            <?php endif; ?>
-                        </li>
+                            </td>
+                        </tr>
                     <?php endforeach; ?>
-                </ul>
+                    </tbody>
+                </table>
             </div>
         </div>
 

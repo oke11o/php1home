@@ -12,10 +12,10 @@
             $menu = require(ROOT_DIR.'engine/menu_builder.php');
             include ROOT_DIR.'templates/chunks/menu_ul.php';
             ?>
-            <form class="form-inline my-2 my-md-0" method="get">
-                <input name="search" class="form-control" type="text" placeholder="Search" aria-label="Search"
-                       value="<?= $search ?? '' ?>">
-            </form>
+
+            <nav class="my-2 my-md-0 mr-md-3">
+                <a href="#">Войти</a>
+            </nav>
         </div>
     </div>
 </nav>
