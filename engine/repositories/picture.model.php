@@ -26,15 +26,3 @@ function getPicturesAssoc($mysqlConnect, $gallery = '')
 
     return $pictures;
 }
-
-function getReviews($mysqlConnect)
-{
-    $sql = 'SELECT * FROM reviews';
-    $stmt = mysqli_query($mysqlConnect, $sql);
-    $reviews = [];
-    while ($row = mysqli_fetch_assoc($stmt)) {
-        $reviews[] = $row;
-    }
-
-    return $reviews;
-}

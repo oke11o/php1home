@@ -23,3 +23,4 @@ require_once ROOT_DIR.'engine/helpers.php';
 require_once ROOT_DIR.'engine/repositories/product.model.php';
 require_once ROOT_DIR.'engine/repositories/picture.model.php';
 require_once ROOT_DIR.'engine/repositories/employee.model.php';
+require_once ROOT_DIR.'engine/repositories/review.model.php';

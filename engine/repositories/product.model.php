@@ -1,5 +1,40 @@
 <?php
 
+function createProduct($mysqlConnect, $name, $description, $category, $price, $image)
+{
+    $sql = sprintf(
+        "INSERT INTO products (name, description, category, price, image) VALUES ('%s', '%s', '%s', '%s', '%s')",
+        mysqli_real_escape_string($mysqlConnect, (string)htmlspecialchars(strip_tags($name))),
+        mysqli_real_escape_string($mysqlConnect, (string)htmlspecialchars(strip_tags($description))),
+        mysqli_real_escape_string($mysqlConnect, (string)htmlspecialchars(strip_tags($category))),
+        $price,
+        $image
+    );
+    mysqli_query($mysqlConnect, $sql);
+    if (mysqli_error($mysqlConnect)) {
+        die(mysqli_error($mysqlConnect));
+    }
+
+    return mysqli_insert_id($mysqlConnect);
+}
+
+function updateProduct($mysqlConnect, $id, $name, $description, $category, $price, $image)
+{
+    $sql = sprintf(
+        'UPDATE products SET name="%s", description="%s", category="%s", price="%s", image="%s" WHERE id=%d',
+        mysqli_real_escape_string($mysqlConnect, (string)htmlspecialchars(strip_tags($name))),
+        mysqli_real_escape_string($mysqlConnect, (string)htmlspecialchars(strip_tags($description))),
+        mysqli_real_escape_string($mysqlConnect, (string)htmlspecialchars(strip_tags($category))),
+        $price,
+        $image,
+        $id
+    );
+    mysqli_query($mysqlConnect, $sql);
+    if (mysqli_error($mysqlConnect)) {
+        die(mysqli_error($mysqlConnect));
+    }
+}
+
 function getProducts($mysqlConnect)
 {
     $sql = 'SELECT * FROM products';
