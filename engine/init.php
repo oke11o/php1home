@@ -18,6 +18,8 @@ $mysqlConnect = mysqli_connect(
     $config['db_name']
     );
 
-require_once __DIR__.'/funcs.php';
-require_once __DIR__.'/helpers.php';
-require_once __DIR__.'/repositories.php';
+require_once ROOT_DIR.'engine/funcs.php';
+require_once ROOT_DIR.'engine/helpers.php';
+require_once ROOT_DIR.'engine/repositories/product.model.php';
+require_once ROOT_DIR.'engine/repositories/picture.model.php';
+require_once ROOT_DIR.'engine/repositories/employee.model.php';
