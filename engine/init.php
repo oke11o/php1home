@@ -1,13 +1,15 @@
 <?php
 
+session_start();
+
 define('ROOT_DIR', __DIR__.'/../');
 define('CALC_OPERATION_SUM', 'sum');
 define('CALC_OPERATION_SUB', 'sub');
 define('CALC_OPERATION_MULT', 'mult');
 define('CALC_OPERATION_DIV', 'div');
 
-$distConfig = require __DIR__.'/../config/config.dist.php';
-$localConfig = require __DIR__.'/../config/config.php';
+$distConfig = require ROOT_DIR.'config/config.dist.php';
+$localConfig = require ROOT_DIR.'config/config.php';
 
 $config = array_merge($distConfig, $localConfig);
 
