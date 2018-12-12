@@ -12,18 +12,20 @@
 </div>
 
 <div class="text-center">
-    <form class="form-signin form-horizontal">
+    <form class="form-signin form-horizontal" method="post">
         <img class="mb-4" src="https://getbootstrap.com/docs/4.1/assets/brand/bootstrap-solid.svg" alt="" width="72"
              height="72">
         <h1 class="h3 mb-3 font-weight-normal">Авторизуйтесь</h1>
 
-        <p class=" text-danger">Input with error and icon</p>
+        <?php if ($error): ?>
+            <p class=" text-danger"><?= $error ?></p>
+        <?php endif; ?>
 
         <label for="inputEmail" class="sr-only text-danger">Email</label>
-        <input type="email" name="email" id="inputEmail" class="form-control " placeholder="Email" required autofocus>
+        <input type="email" name="email" value="<?= $email ?? '' ?>" id="inputEmail" class="form-control <?php if ($error) {echo 'is-invalid';} ?>" placeholder="Email" required autofocus>
 
         <label for="inputPassword" class="sr-only">Пароль</label>
-        <input type="password" name="password" id="inputPassword" class="form-control is-invalid" placeholder="Пароль" required>
+        <input type="password" name="password" id="inputPassword" class="form-control  <?php if ($error) {echo 'is-invalid';} ?>" placeholder="Пароль" required>
 
         <div class="checkbox mb-3">
             <label>

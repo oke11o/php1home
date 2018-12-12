@@ -6,5 +6,5 @@ CREATE TABLE users
   token          VARCHAR(255) NULL,
   last_action_at DATETIME     NULL,
   PRIMARY KEY (id),
-  INDEX email (email)
+  UNIQUE INDEX email (email)
 );

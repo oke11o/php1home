@@ -1,4 +1,3 @@
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
     <div class="container">
         <a class="navbar-brand" href="#">PHP Level 1</a>
@@ -14,8 +13,22 @@
             ?>
 
             <nav class="my-2 my-md-0 mr-md-3">
-                <a href="#">Войти</a>
+                <?php if ($user): ?>
+                    <a href="#"><?= $user['email'] ?></a>
+                    <a href="/logout.php">Выйти</a>
+                <?php else: ?>
+                    <a href="/login.php">Войти</a>
+                <?php endif; ?>
             </nav>
         </div>
     </div>
 </nav>
+
+<?php if (isset($_SESSION['success_message'])): ?>
+    <div class="text-success">
+        <?= $_SESSION['success_message']; ?>
+    </div>
+    <?php
+    unset($_SESSION['success_message']);
+endif;
+?>

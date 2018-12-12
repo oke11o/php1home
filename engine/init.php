@@ -26,3 +26,9 @@ require_once ROOT_DIR.'engine/repositories/product.model.php';
 require_once ROOT_DIR.'engine/repositories/picture.model.php';
 require_once ROOT_DIR.'engine/repositories/employee.model.php';
 require_once ROOT_DIR.'engine/repositories/review.model.php';
+require_once ROOT_DIR.'engine/repositories/user.model.php';
+
+$user = null;
+if (isset($_SESSION['user_id'])) {
+    $user = getUser($mysqlConnect, $_SESSION['user_id']);
+}
