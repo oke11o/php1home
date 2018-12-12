@@ -1,0 +1,32 @@
+<?php
+
+require_once '../../../engine/init.php';
+
+$id = $_GET['id'] ?? null;
+if (!$id) {
+    die('Не валидный запрос');
+}
+$product = getProduct($mysqlConnect, $id);
+if (!$product) {
+    die('Не могу найти продукт с id='.$id);
+}
+
+$pageH1 = sprintf('Редактирование товара "%s"', $product['name']);
+
+if ($_POST) {
+    $image = $product['image'];
+    if (isset($_FILES['image']) && $_FILES['image']['tmp_name']) {
+        $image = copyFileAndGetPath('image', '/img/products/');
+    }
+    $name = $_POST['name'];
+    $description = $_POST['description'];
+    $price = (float) $_POST['price'];
+    $category = $_POST['category'];
+
+    updateProduct($mysqlConnect, $id, $name, $description, $category, $price, $image);
+
+    $message = 'Успешно отреактирван продукт с id='.$id;
+    header('Location: index.php?message='.$message);
+}
+
+require ROOT_DIR.'templates/admin/catalog/edit.php';

@@ -30,3 +30,14 @@ function getPageOpenCount() {
 
     return $count;
 }
+
+function copyFileAndGetPath($fieldName, $directory)
+{
+    $path = $directory.$_FILES[$fieldName]['name'];
+    $uploadfile = ROOT_DIR.'public'.$path;
+    if (!move_uploaded_file($_FILES[$fieldName]['tmp_name'], $uploadfile)) {
+        die('Cannot upload file');
+    }
+
+    return $path;
+}

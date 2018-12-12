@@ -13,7 +13,7 @@
         <div class="dropdown-menu" aria-labelledby="dropdown<?= $i ?>">
             <?php foreach ($children as $child) : ?>
 
-                <a class="dropdown-item" href="<?= $child['href'] ?>"><?= $child['name'] ?> - <?php echo humanUrl('Моя ссылка'); ?></a>
+                <a class="dropdown-item" href="<?= $child['href'] ?>"><?= $child['name'] ?></a>
             <?php endforeach; ?>
         </div>
     <?php endif ?>

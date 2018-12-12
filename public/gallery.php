@@ -3,11 +3,8 @@
 require_once '../engine/init.php';
 
 if ($_POST && isset($_POST['name'])) {
-    $path = '/img/gallery/uploaded/'.$_FILES['picture']['name'];
-    $uploadfile = __DIR__ . $path;
-    if (!move_uploaded_file($_FILES['picture']['tmp_name'], $uploadfile)) {
-        die('Cannot upload file');
-    }
+
+    $path = copyFileAndGetPath('picture', '/img/gallery/uploaded/');
 
     $name = $_POST['name'];
     $gallery = $_POST['gallery'];

@@ -41,3 +41,43 @@ function humanUrl($string)
 
     return replace(rus2translit($lower));
 }
+
+function sum($x, $y)
+{
+    return $x + $y;
+}
+
+function sub($x, $y)
+{
+    return $x - $y;
+}
+
+function mult($x, $y)
+{
+    return $x * $y;
+}
+
+function div($x, $y)
+{
+    if ($y == 0) {
+        return 'Деление на ноль невозможно.';
+    }
+
+    return $x / $y;
+}
+
+function mathOperation($a, $b, $op = '')
+{
+    switch ($op) {
+        case CALC_OPERATION_SUM:
+            return sum($a, $b);
+        case CALC_OPERATION_SUB:
+            return sub($a, $b);
+        case CALC_OPERATION_MULT:
+            return mult($a, $b);
+        case CALC_OPERATION_DIV:
+            return div($a, $b);
+    }
+
+    return sprintf('Неизвестная операция "%s"', $op);
+}
