@@ -2,7 +2,6 @@
 
 require_once '../engine/init.php';
 
-
 $id = (int) $_GET['id'] ?? 0;
 $product = null;
 if ($id) {

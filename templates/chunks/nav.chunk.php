@@ -13,6 +13,7 @@
             ?>
 
             <nav class="my-2 my-md-0 mr-md-3">
+                <a href="/cart/index/php">Корзина (<?php if (isset($_SESSION['cart'])) { echo count($_SESSION['cart']); } else { echo '0'; } ?>)</a>
                 <?php if ($user): ?>
                     <a href="#"><?= $user['email'] ?></a>
                     <a href="/logout.php">Выйти</a>
