@@ -6,7 +6,6 @@
 
 <body>
 
-
 <?php include ROOT_DIR.'templates/chunks/nav.chunk.php' ?>
 
 <main role="main" class="site-main main">
@@ -17,9 +16,6 @@
         </div>
     </section>
     <?php endif; ?>
-
-
-
     <div class="container">
         <?php if($cartTableData): ?>
             <table id="cart" class="table table-hover table-condensed">
@@ -46,11 +42,14 @@
                         </td>
                         <td data-th="Price"><?= $cartItem['price'] ?> руб</td>
                         <td data-th="Quantity">
-                            <input type="number" class="form-control text-center" value="<?= $cartItem['quantity'] ?>">
+                            <form method="post" action="/cart/update.php">
+                                <input type="hidden" name="product_id" value="<?= $cartItem['id'] ?>">
+                                <input type="number" name="quantity" class="form-control text-center" value="<?= $cartItem['quantity'] ?>">
+                                <button class="btn btn-info btn-sm" type="submit"><i class="fa fa-refresh"></i></button>
+                            </form>
                         </td>
                         <td data-th="Subtotal" class="text-center"><?= $cartItem['subtotal'] ?> руб</td>
                         <td class="actions" data-th="">
-                            <button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
                             <form method="post" action="/cart/delete.php">
                                 <input type="hidden" name="product_id" value="<?= $cartItem['id'] ?>">
                                 <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>
