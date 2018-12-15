@@ -26,7 +26,10 @@
                     <img class="featurette-image img-fluid mx-auto" alt="500x500" src="<?= $product['image'] ?>" data-holder-rendered="true" style="">
                 </div>
                 <div class="col-md-5 order-md-1">
-                    <a href="#" class="btn btn-primary">Купить</a>
+                    <form method="post" action="/cart/add.php">
+                        <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                        <button type="submit" class="btn btn-primary">Купить</button>
+                    </form>
                 </div>
             </div>
         </div>

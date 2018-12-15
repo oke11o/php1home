@@ -38,7 +38,10 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <a href="product.php?id=<?= $product['id'] ?>" type="button" class="btn btn-sm btn-outline-secondary">Посмотреть</a>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Купить</button>
+                                        <form method="post" action="/cart/add.php">
+                                            <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                                            <button type="submit" class="btn btn-sm btn-outline-secondary">Купить</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
