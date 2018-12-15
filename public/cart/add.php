@@ -9,19 +9,25 @@ if ($_POST && isset($_POST['product_id'])) {
     if (!$id) {
         $message = 'Неверный id продукта';
     } else {
-        if (!isset($_SESSION['cart'])) {
-            $_SESSION['cart'] = [];
-        }
-        if (isset($_SESSION['cart'][$id])) {
-            $_SESSION['cart'][$id]['quantity']++;
+        $product = getProduct($mysqlConnect, $id);
+        if (!$product) {
+            $message = 'Не существующий id продукта '.$id;
         } else {
-            $_SESSION['cart'][$id] = [
-                'product_id' => $id,
-                'quantity' => 1,
-            ];
+            if (!isset($_SESSION['cart'])) {
+                $_SESSION['cart'] = [];
+            }
+            if (isset($_SESSION['cart'][$id])) {
+                $_SESSION['cart'][$id]['quantity']++;
+            } else {
+                $_SESSION['cart'][$id] = [
+                    'product_id' => $id,
+                    'quantity' => 1,
+                ];
+            }
+            $message = 'Продукт с id '.$id.' успешно добавлен в корзину';
         }
-        $message = 'Продукт с id '.$id.' успешно добавлен в корзину';
     }
+
 
     $_SESSION['success_message'] = $message;
 }
