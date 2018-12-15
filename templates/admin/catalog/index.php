@@ -38,7 +38,7 @@
                                 <a href="/admin/catalog/edit.php?id=<?= $product['id'] ?>"><?= $product['name'] ?></a>
                             </td>
                             <td><?= $product['category'] ?></td>
-                            <td><?= $product['description'] ?></td>
+                            <td><?= $product['short_description'] ?></td>
                             <td><?= $product['price'] ?></td>
                             <td>
                                 <?php if ($product['image']): ?>
@@ -71,6 +71,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label>Короткое описание</label>
+                    <textarea name="short_description" class="form-control" rows="5" required
+                              placeholder="Короткое описание"></textarea>
+                </div>
+                <div class="form-group">
                     <label>Описание</label>
                     <textarea name="description" class="form-control" rows="5" required
                               placeholder="Описание"></textarea>
@@ -83,6 +88,8 @@
                 <div class="form-group">
                     <label for="exampleFormControlSelect2">Категоря товаров</label>
                     <select name="category" class="form-control">
+                        <option value="phones">Мобильные телефоны</option>
+                        <option value="tablets">Планшеты</option>
                         <option value="electro">Электро товары</option>
                         <option value="technic">Бытовая техника</option>
                     </select>

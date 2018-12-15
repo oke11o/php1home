@@ -19,11 +19,12 @@ if ($_POST) {
         $image = copyFileAndGetPath('image', '/img/products/');
     }
     $name = $_POST['name'];
+    $shortDescription = $_POST['short_description'];
     $description = $_POST['description'];
     $price = (float) $_POST['price'];
     $category = $_POST['category'];
 
-    updateProduct($mysqlConnect, $id, $name, $description, $category, $price, $image);
+    updateProduct($mysqlConnect, $id, $name, $shortDescription, $description, $category, $price, $image);
 
     $message = 'Успешно отреактирван продукт с id='.$id;
     header('Location: index.php?message='.$message);
