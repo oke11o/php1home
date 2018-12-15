@@ -17,6 +17,8 @@
         if (isset($menuItem['children'])) {
             $children = $menuItem['children'];
         }
+        $security = $menuItem['security'] ?? null;
+
         include 'menu_li.php';
     }
     ?>

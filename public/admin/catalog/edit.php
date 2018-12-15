@@ -2,6 +2,10 @@
 
 require_once '../../../engine/init.php';
 
+if($user['role'] != 'admin') {
+    die('Недостаточно прав');
+}
+
 $id = $_GET['id'] ?? null;
 if (!$id) {
     die('Не валидный запрос');
