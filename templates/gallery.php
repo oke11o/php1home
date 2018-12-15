@@ -19,16 +19,10 @@
     <div class="album py-5 bg-light">
         <div class="container">
             <div class="row">
-                <?php
-                $images = getPicturesAssoc($mysqlConnect, $galleryType);
-                foreach ($images as $image) {
-                    include '../templates/chunks/gallery_item.php';
-                }
-                ?>
+                <?= $galleryMarkup; ?>
             </div>
         </div>
     </div>
-
 
     <div class="container">
         <form method="post" enctype="multipart/form-data" action="/gallery.php">

@@ -28,5 +28,7 @@ $pageTitle = 'Галерея';
 $galleryType = 'Страница галерея';
 $search = $_GET['search'] ?? '';
 
-require '../templates/gallery.php'
-?>
+$images = getPicturesAssoc($mysqlConnect, $galleryType);
+$galleryMarkup = getGalleryItemsTpl($images);
+
+require '../templates/gallery.php';
