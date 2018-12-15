@@ -2,6 +2,8 @@
 
 require_once '../engine/init.php';
 
+$pageTitle = 'Войти';
+
 $email = '';
 $password = '';
 $error = '';

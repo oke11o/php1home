@@ -2,13 +2,6 @@
 
 return [
     [
-        'name' => 'Домой',
-        'href' => '/',
-        'attrs' => [
-        ],
-        'children' => [],
-    ],
-    [
         'name' => 'Галерея',
         'href' => '/gallery.php',
         'children' => [],

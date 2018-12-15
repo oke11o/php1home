@@ -25,7 +25,7 @@
                         <th>Description</th>
                         <th>Price</th>
                         <th>Image</th>
-                        <th>Image</th>
+                        <th>Deleted At</th>
                     </thead>
                     <tbody>
                     <?php
@@ -34,7 +34,9 @@
                         ?>
                         <tr>
                             <td><?= $product['id'] ?></td>
-                            <td><?= $product['name'] ?></td>
+                            <td>
+                                <a href="/admin/catalog/edit.php?id=<?= $product['id'] ?>"><?= $product['name'] ?></a>
+                            </td>
                             <td><?= $product['category'] ?></td>
                             <td><?= $product['description'] ?></td>
                             <td><?= $product['price'] ?></td>
@@ -44,10 +46,14 @@
                                 <?php endif; ?>
                             </td>
                             <td>
-                                <form method="post" action="/admin/catalog/delete.php">
-                                    <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
-                                    <button type="submit" class="btn btn-danger">Удалить</button>
-                                </form>
+                                <?php if ($product['deleted_at']): ?>
+                                    <span class="small"><?= $product['deleted_at'] ?></span>
+                                <?php else: ?>
+                                    <form method="post" action="/admin/catalog/delete.php">
+                                        <input type="hidden" name="product_id" value="<?= $product['id'] ?>">
+                                        <button type="submit" class="btn btn-danger">Удалить</button>
+                                    </form>
+                                <?php endif; ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -57,6 +63,7 @@
         </div>
 
         <div class="container">
+            <h3>Добавить товар</h3>
             <form method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Имя</label>

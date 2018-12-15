@@ -10,18 +10,10 @@
 <?php include ROOT_DIR.'templates/chunks/nav.chunk.php' ?>
 
 <main role="main" class="site-main main">
-    <?php
-    $pageOpenCount = getPageOpenCount();
-    ?>
     <section class="jumbotron text-center">
         <div class="container">
             <h1 class="jumbotron-heading"><?= $pageH1 ?></h1>
         </div>
-        <?php
-        $employees = getEmployees($mysqlConnect, $search);
-        include '../templates/chunks/employees.php';
-        ?>
-        <p>Показов сайта <?= $pageOpenCount ?></p>
     </section>
 
     <div class="album py-5 bg-light">
