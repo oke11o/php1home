@@ -21,11 +21,11 @@
             <p class=" text-danger"><?= $error ?></p>
         <?php endif; ?>
 
-        <label for="inputEmail" class="sr-only text-danger">Email</label>
-        <input type="email" name="email" value="<?= $email ?? '' ?>" id="inputEmail" class="form-control <?php if ($error) {echo 'is-invalid';} ?>" placeholder="Email" required autofocus>
+        <label for="inputEmail" class="sr-only ">Email</label>
+        <input type="email" name="email" value="<?= $email ?? '' ?>" id="inputEmail" class="form-control email <?php if ($error) {echo 'is-invalid';} ?>" placeholder="Email" required autofocus>
 
         <label for="inputPassword" class="sr-only">Пароль</label>
-        <input type="password" name="password" id="inputPassword" class="form-control  <?php if ($error) {echo 'is-invalid';} ?>" placeholder="Пароль" required>
+        <input type="password" name="password" id="inputPassword" class="form-control confirm_password  <?php if ($error) {echo 'is-invalid';} ?>" placeholder="Пароль" required>
 
         <div class="checkbox mb-3">
             <label>
@@ -34,6 +34,9 @@
         </div>
 
         <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+        <div style="margin-top:10px;">
+            <a href="/registration.php">Зарегистрироваться</a>
+        </div>
 
         <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
     </form>

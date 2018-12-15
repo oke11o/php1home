@@ -24,8 +24,9 @@ if ($_POST && isset($_POST['name'])) {
 }
 
 $pageH1 = 'Галерея';
+$pageTitle = 'Галерея';
 $galleryType = 'Страница галерея';
 $search = $_GET['search'] ?? '';
 
-require '../templates/main.php'
+require '../templates/gallery.php'
 ?>

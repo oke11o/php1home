@@ -17,12 +17,13 @@ function getImages($dir)
     return $images;
 }
 
-function getPageOpenCount() {
+function getPageOpenCount()
+{
     $filename = '../data/page_open_count.txt';
 
     $count = 1;
     if (file_exists($filename)) {
-        $count = (int) file_get_contents($filename);
+        $count = (int)file_get_contents($filename);
         $count++;
     }
 
@@ -40,4 +41,16 @@ function copyFileAndGetPath($fieldName, $directory)
     }
 
     return $path;
+}
+
+function validateRegistrationData($email, $password, $confirmPassword)
+{
+    if ($password != $confirmPassword) {
+        return 'Вы неверно подтвердили пароль';
+    }
+    if (mb_strlen($password) < 4) {
+        return 'Пароль не может быть меньше 4 символов';
+    }
+
+    return null;
 }

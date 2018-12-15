@@ -7,3 +7,4 @@ if (isset($_SESSION['user_id'])) {
 }
 $_SESSION['success_message'] = 'Вы разлогинились';
 header('Location: /');
+die;

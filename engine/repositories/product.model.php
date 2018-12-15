@@ -1,10 +1,11 @@
 <?php
 
-function createProduct($mysqlConnect, $name, $description, $category, $price, $image)
+function createProduct($mysqlConnect, $name, $shortDescription, $description, $category, $price, $image)
 {
     $sql = sprintf(
-        "INSERT INTO products (name, description, category, price, image) VALUES ('%s', '%s', '%s', '%s', '%s')",
+        "INSERT INTO products (name, short_description, description, category, price, image) VALUES ('%s', '%s', '%s', '%s', '%s', '%s')",
         mysqli_real_escape_string($mysqlConnect, (string)htmlspecialchars(strip_tags($name))),
+        mysqli_real_escape_string($mysqlConnect, (string)htmlspecialchars(strip_tags($shortDescription))),
         mysqli_real_escape_string($mysqlConnect, (string)htmlspecialchars(strip_tags($description))),
         mysqli_real_escape_string($mysqlConnect, (string)htmlspecialchars(strip_tags($category))),
         $price,
@@ -18,11 +19,12 @@ function createProduct($mysqlConnect, $name, $description, $category, $price, $i
     return mysqli_insert_id($mysqlConnect);
 }
 
-function updateProduct($mysqlConnect, $id, $name, $description, $category, $price, $image)
+function updateProduct($mysqlConnect, $id, $name, $shortDescription, $description, $category, $price, $image)
 {
     $sql = sprintf(
-        'UPDATE products SET name="%s", description="%s", category="%s", price="%s", image="%s" WHERE id=%d',
+        'UPDATE products SET name="%s", short_description="%s", description="%s", category="%s", price="%s", image="%s" WHERE id=%d',
         mysqli_real_escape_string($mysqlConnect, (string)htmlspecialchars(strip_tags($name))),
+        mysqli_real_escape_string($mysqlConnect, (string)htmlspecialchars(strip_tags($shortDescription))),
         mysqli_real_escape_string($mysqlConnect, (string)htmlspecialchars(strip_tags($description))),
         mysqli_real_escape_string($mysqlConnect, (string)htmlspecialchars(strip_tags($category))),
         $price,
@@ -35,9 +37,12 @@ function updateProduct($mysqlConnect, $id, $name, $description, $category, $pric
     }
 }
 
-function getProducts($mysqlConnect)
+function getProducts($mysqlConnect, $notDeleted = false)
 {
     $sql = 'SELECT * FROM products';
+    if ($notDeleted) {
+        $sql .= ' WHERE deleted_at IS NULL';
+    }
     $stmt = mysqli_query($mysqlConnect, $sql);
     $products = [];
     while ($row = mysqli_fetch_assoc($stmt)) {

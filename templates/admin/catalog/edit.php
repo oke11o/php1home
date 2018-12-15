@@ -23,6 +23,11 @@
                 </div>
 
                 <div class="form-group">
+                    <label>Короткое описание</label>
+                    <textarea name="short_description" class="form-control" rows="5" required
+                              placeholder="Короткое описание"> <?= $product['short_description'] ?></textarea>
+                </div>
+                <div class="form-group">
                     <label>Описание</label>
                     <textarea name="description" class="form-control" rows="5" required
                               placeholder="Описание"> <?= $product['description'] ?></textarea>
@@ -35,6 +40,8 @@
                 <div class="form-group">
                     <label for="exampleFormControlSelect2">Категоря товаров</label>
                     <select name="category" class="form-control">
+                        <option value="phones" <?php if ($product['category'] == 'phones') {echo 'selected';} ?>>Мобильные телефоны</option>
+                        <option value="tablets" <?php if ($product['category'] == 'tablets') {echo 'selected';} ?>>Планшеты</option>
                         <option value="electro" <?php if ($product['category'] == 'electro') {echo 'selected';} ?>>Электро товары</option>
                         <option value="technic" <?php if ($product['category'] == 'technic') {echo 'selected';} ?>>Бытовая техника</option>
                     </select>

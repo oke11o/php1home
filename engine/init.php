@@ -9,7 +9,12 @@ define('CALC_OPERATION_MULT', 'mult');
 define('CALC_OPERATION_DIV', 'div');
 
 $distConfig = require ROOT_DIR.'config/config.dist.php';
-$localConfig = require ROOT_DIR.'config/config.php';
+if (!file_exists(ROOT_DIR.'config/config.php')) {
+    echo 'Создайте конфиг сайта';
+    $localConfig = [];
+} else {
+    $localConfig = require ROOT_DIR.'config/config.php';
+}
 
 $config = array_merge($distConfig, $localConfig);
 

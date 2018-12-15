@@ -3,6 +3,7 @@
 require_once '../engine/init.php';
 
 $pageH1 = 'Калькулятор';
+$pageTitle = 'Калькулятор';
 $galleryType = '';
 $search = $_GET['search'] ?? '';
 $operationsSelect = [

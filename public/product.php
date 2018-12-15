@@ -12,5 +12,6 @@ if (!$product) {
 }
 
 $pageH1 = $product['name'];
+$pageTitle = $product['name'];
 
 require ROOT_DIR.'templates/product.php';

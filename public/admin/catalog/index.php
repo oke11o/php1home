@@ -10,14 +10,15 @@ if ($_POST) {
         $image = copyFileAndGetPath('image', '/img/products/');
     }
     $name = $_POST['name'];
+    $shortDescription = $_POST['short_description'];
     $description = $_POST['description'];
     $price = (float)$_POST['price'];
     $category = $_POST['category'];
 
-    $errors = validateProductData($name, $description, $category, $price, $image);
+    $errors = validateProductData($name, $shortDescription, $description, $category, $price, $image);
 
     if (empty($errors)) {
-        $id = createProduct($mysqlConnect, $name, $description, $category, $price, $image);
+        $id = createProduct($mysqlConnect, $name, $shortDescription, $description, $category, $price, $image);
 
         header('Location: index.php?new_id='.$id);
         die;
@@ -26,7 +27,7 @@ if ($_POST) {
 
 require ROOT_DIR.'templates/admin/catalog/index.php';
 
-function validateProductData($name, $description, $category, $price, $image)
+function validateProductData($name, $shortDescription, $description, $category, $price, $image)
 {
     return [];
 }
