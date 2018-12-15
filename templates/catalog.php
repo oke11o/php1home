@@ -19,7 +19,7 @@
         <div class="container">
             <div class="row">
                 <?php
-                $products = getProducts($mysqlConnect);
+                $products = getProducts($mysqlConnect, true);
                 foreach ($products as $product):
                     ?>
                     <div class="col-md-4">

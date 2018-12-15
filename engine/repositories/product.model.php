@@ -37,9 +37,12 @@ function updateProduct($mysqlConnect, $id, $name, $shortDescription, $descriptio
     }
 }
 
-function getProducts($mysqlConnect)
+function getProducts($mysqlConnect, $notDeleted = false)
 {
     $sql = 'SELECT * FROM products';
+    if ($notDeleted) {
+        $sql .= ' WHERE deleted_at IS NULL';
+    }
     $stmt = mysqli_query($mysqlConnect, $sql);
     $products = [];
     while ($row = mysqli_fetch_assoc($stmt)) {
