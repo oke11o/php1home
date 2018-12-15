@@ -23,17 +23,28 @@ $mysqlConnect = mysqli_connect(
     $config['db_user'],
     $config['db_pass'],
     $config['db_name']
-    );
+);
 
-require_once ROOT_DIR.'engine/funcs.php';
-require_once ROOT_DIR.'engine/helpers.php';
-require_once ROOT_DIR.'engine/repositories/product.model.php';
-require_once ROOT_DIR.'engine/repositories/picture.model.php';
-require_once ROOT_DIR.'engine/repositories/employee.model.php';
-require_once ROOT_DIR.'engine/repositories/review.model.php';
-require_once ROOT_DIR.'engine/repositories/user.model.php';
+autoload(ROOT_DIR.'engine/', ['init.php', 'menu_builder.php']);
 
 $user = null;
 if (isset($_SESSION['user_id'])) {
     $user = getUser($mysqlConnect, $_SESSION['user_id']);
+}
+
+function autoload($dir, $excludeFiles = [])
+{
+    $excludeFiles = array_merge(['.', '..'], $excludeFiles);
+    $files = scandir($dir);
+    foreach ($files as $file) {
+        if (!in_array($file, $excludeFiles)) {
+            if (is_dir($dir.$file)) {
+                autoload($dir.$file.'/', $excludeFiles);
+            } else {
+                if ("text/x-php" == mime_content_type($dir.$file)) {
+                    require_once $dir.$file;
+                }
+            }
+        }
+    }
 }

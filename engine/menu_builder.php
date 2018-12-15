@@ -23,6 +23,7 @@ return [
     ],
     [
         'name' => 'Адмика',
+        'security' => 'admin',
         'children' => [
             [
                 'name' => 'Каталог',

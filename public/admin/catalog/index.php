@@ -2,6 +2,11 @@
 
 require_once '../../../engine/init.php';
 
+if($user['role'] != 'admin') {
+//    require ROOT_DIR.'templates/error.php';die; TODO;
+    die('Недостаточно прав');
+}
+
 $pageH1 = 'Админка каталога';
 
 if ($_POST) {
