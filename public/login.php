@@ -17,6 +17,7 @@ if (isset($_POST['email'], $_POST['password'])) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['success_message'] = 'Успешная авторизация';
             header('Location: /');
+            die;
         } else {
             $error = 'Неверные email или пароль';
         }

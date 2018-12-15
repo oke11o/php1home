@@ -28,6 +28,7 @@ if ($_POST) {
 
     $message = 'Успешно отреактирван продукт с id='.$id;
     header('Location: index.php?message='.$message);
+    die;
 }
 
 require ROOT_DIR.'templates/admin/catalog/edit.php';

@@ -11,3 +11,4 @@ if ($_POST && isset($_POST['product_id'])) {
 }
 
 header('Location: index.php?message='.$message);
+die;

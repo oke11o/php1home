@@ -15,4 +15,3 @@ if ($_POST && isset($_POST['name']) && isset($_POST['text'])) {
 }
 
 require '../templates/reviews.php';
-?>
